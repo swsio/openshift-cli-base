@@ -27,4 +27,6 @@ RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux6
 RUN chmod +x ./jq
 RUN cp jq /usr/bin
 
+RUN yum -y install findutils
+
 
