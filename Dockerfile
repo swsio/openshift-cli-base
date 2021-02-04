@@ -22,11 +22,3 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECT
 RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/clients/oc/${OPENSHIFT_VERSION}/linux/oc.tar.gz && tar -zxf oc.tar.gz
 RUN  mv ./oc /usr/local/bin/oc && rm oc.tar.gz
 
-# Create a scripts dir for child images to put their scripts
-RUN mkdir /scripts
-
-WORKDIR /scripts
-
-# Child scripts will copy their unique scripts to the /scripts folder
-ONBUILD COPY scripts/* /scripts/
-ONBUILD RUN chmod +x /scripts/*.sh
