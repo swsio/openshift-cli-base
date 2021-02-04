@@ -21,7 +21,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECT
 
 # Install oc
 RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/clients/oc/${OPENSHIFT_VERSION}/linux/oc.tar.gz && tar -zxf oc.tar.gz
-RUN  mv ./oc /usr/local/bin/oc && rm oc.tar.gz-
+RUN  mv ./oc /usr/local/bin/oc && rm oc.tar.gz
 
 RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 RUN chmod +x ./jq
