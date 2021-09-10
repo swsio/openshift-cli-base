@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:latest
+FROM registry.access.redhat.com/ubi8-minimal:latest
 # Can configure oc and kubectl versions. Default is oc 4.7 with the corresponding kubectl version
 # for more info about Kubernetes version used with specific versions of OpenShift
 # OpenShift 4.7 (Default)
@@ -12,7 +12,8 @@ ARG KUBECTL_VERSION=1.22.1
 
 
 # Need tar command
-RUN microdnf upgrade -y && microdnf install -y tar && microdnf clean all -y
+RUN microdnf upgrade -y && microdnf install -y tar gzip wget findutils && microdnf clean all -y
+RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x ./jq && cp jq /usr/bin
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
