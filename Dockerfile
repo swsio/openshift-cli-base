@@ -12,7 +12,8 @@ ARG KUBECTL_VERSION=1.22.1
 
 
 # Need tar command
-RUN microdnf upgrade -y && microdnf install -y tar gzip && microdnf clean all -y
+RUN microdnf upgrade -y && microdnf install -y tar gzip wget findutils && microdnf clean all -y
+RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x ./jq && cp jq /usr/bin
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
