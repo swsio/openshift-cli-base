@@ -19,7 +19,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECT
 # RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
 # Install oc
-RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-${OPENSHIFT_VERSION}/openshift-install-linux.tar.gz && tar -zxf openshift-install-linux.tar.gz
+RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-${OPENSHIFT_VERSION}/openshift-client-linux.tar.gz && tar -zxf openshift-client-linux.tar.gz
 
-RUN  mv ./oc /usr/local/bin/oc && rm openshift-install-linux.tar.gz
+RUN  mv ./oc /usr/local/bin/oc && rm openshift-client-linux.tar.gz
 
