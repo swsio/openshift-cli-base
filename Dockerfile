@@ -1,10 +1,10 @@
 FROM registry.fedoraproject.org/fedora-minimal:latest
-# Can configure oc and kubectl versions. Default is oc 4.6 with the corresponding kubectl version
+# Can configure oc and kubectl versions. Default is oc 4.7 with the corresponding kubectl version
 # for more info about Kubernetes version used with specific versions of OpenShift
-# OpenShift 4.6 (Default)
-ARG OPENSHIFT_VERSION=4.6
+# OpenShift 4.7 (Default)
+ARG OPENSHIFT_VERSION=4.7
 #
-ARG KUBECTL_VERSION=1.19.2
+ARG KUBECTL_VERSION=1.22.1
 # https://storage.googleapis.com/kubernetes-release/release/stable.txt
 
 # OpenShift 4.5 (Need to provide via --build-arg flags when building)
@@ -19,6 +19,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECT
 # RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
 # Install oc
-RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/clients/oc/${OPENSHIFT_VERSION}/linux/oc.tar.gz && tar -zxf oc.tar.gz
-RUN  mv ./oc /usr/local/bin/oc && rm oc.tar.gz
+RUN curl -LO  https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-${OPENSHIFT_VERSION}/openshift-install-linux.tar.gz && tar -zxf openshift-install-linux.tar.gz
+
+RUN  mv ./oc /usr/local/bin/oc && rm openshift-install-linux.tar.gz
 
