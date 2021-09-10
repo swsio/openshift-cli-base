@@ -12,7 +12,7 @@ ARG KUBECTL_VERSION=1.22.1
 
 
 # Need tar command
-RUN microdnf upgrade && microdnf install -y tar && microdnf clean all
+RUN microdnf upgrade -y && microdnf install -y tar && microdnf clean all -y
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
