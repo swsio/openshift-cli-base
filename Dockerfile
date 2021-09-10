@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:latest
+FROM registry.access.redhat.com/ubi8-minimal:latest
 # Can configure oc and kubectl versions. Default is oc 4.7 with the corresponding kubectl version
 # for more info about Kubernetes version used with specific versions of OpenShift
 # OpenShift 4.7 (Default)
